@@ -42,6 +42,8 @@ ADD conf/supervisord-php-fpm.ini /etc/supervisor.d/php-fpm.ini
 ADD conf/supervisord-nginx.ini /etc/supervisor.d/nginx.ini
 ADD src/index.php /var/www/html/index.php
 
+WORKDIR /var/www/html
+
 EXPOSE 80
 
 CMD ["/start.sh"]

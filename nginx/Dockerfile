@@ -14,7 +14,7 @@ RUN apk update \
   && mkdir /run/nginx \
   && mkdir -p /var/log/supervisor \
   && chmod 755 /start.sh \
-  && docker-php-ext-install gd exif intl soap dom zip opcache \
+  && docker-php-ext-install pdo_mysql gd exif intl soap dom zip opcache \
   && echo "cgi.fix_pathinfo=0" > ${php_vars} &&\
     echo "upload_max_filesize = 100M"  >> ${php_vars} &&\
     echo "post_max_size = 100M"  >> ${php_vars} &&\

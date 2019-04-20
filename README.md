@@ -38,7 +38,19 @@ sduo docker run -p 80:80 -d -e 'WEBROOT=/var/www/html/public' -e 'SET_PHP_INI_EN
 ### oci8
 
 Image with PHP ext oci8 configured.
+```
+# pull lasted
+docker pull paliari/php-fpm-nginx:oci8
+# or custom version
+docker pull paliari/php-fpm-nginx:oci8-0.0.2
+```
 
 ### imagemagick
 
 Image with imagemagick installed in OS.
+```
+# pull lasted
+docker pull paliari/php-fpm-nginx:imagemagick
+# or custom version
+docker pull paliari/php-fpm-nginx:imagemagick-0.0.2
+```

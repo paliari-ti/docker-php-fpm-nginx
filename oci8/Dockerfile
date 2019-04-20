@@ -1,5 +1,7 @@
 FROM paliari/php-fpm-nginx:latest
 
+LABEL maintainer='Marcos A Paliari <marcos@paliari.com.br>'
+
 ENV LD_LIBRARY_PATH /usr/local/instantclient_12_2
 ENV ORACLE_HOME /usr/local/instantclient
 

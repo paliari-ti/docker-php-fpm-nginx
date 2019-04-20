@@ -9,8 +9,8 @@ ADD start.sh /start.sh
 
 RUN apk update \
   && apk upgrade \
-  && apk add  --no-cache bash supervisor nginx libpng-dev gcc g++ zlib-dev icu-dev libxml2-dev libzip-dev \
-  && apk del gcc musl-dev linux-headers libffi-dev augeas-dev python-dev make autoconf \
+  && apk add --no-cache bash supervisor nginx libpng-dev g++ zlib-dev icu-dev libxml2-dev libzip-dev \
+  && apk del musl-dev linux-headers libffi-dev augeas-dev python-dev make autoconf \
   && mkdir /run/nginx \
   && mkdir -p /var/log/supervisor \
   && chmod 755 /start.sh \
@@ -35,7 +35,8 @@ RUN apk update \
         -e "s/;listen.group = www-data/listen.group = nginx/g" \
         -e "s/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g" \
         -e "s/^;clear_env = no$/clear_env = no/" \
-        ${fpm_conf}
+        ${fpm_conf} \
+  && rm -rf /var/cache/apk/* /tmp/pear/
 
 ADD conf/nginx-site.conf /etc/nginx/conf.d/default.conf
 ADD conf/supervisord.conf /etc/supervisord.conf

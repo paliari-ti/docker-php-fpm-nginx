@@ -21,5 +21,5 @@ RUN apk update \
  && ln -s /usr/lib/libnsl.so.2.0.0  /usr/lib/libnsl.so \
  && echo "instantclient,${ORACLE_HOME}" | pecl install oci8 \
  && echo 'extension=oci8.so' > /usr/local/etc/php/conf.d/docker-php-ext-oci8.ini \
- && apk del php7-pear php7-dev gcc musl-dev \
+ && apk del php7-pear php7-dev gcc musl-dev make \
  && rm -rf /tmp/*.zip /var/cache/apk/* /tmp/pear/

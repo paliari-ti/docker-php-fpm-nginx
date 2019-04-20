@@ -20,10 +20,8 @@ docker pull paliari/php-fpm-nginx:latest
 To simply run the container:
 ```
 sudo docker run -d paliari/php-fpm-nginx
-```
-To dynamically pull code from git when starting:
-```
-sduo docker run -d -e 'WEBROOT=/var/www/html/public' -e 'SET_PHP_INI_ENV=production' -e 'PHP_MEM_LIMIT=20' -e 'PHP_POST_MAX_SIZE=10' -e 'PHP_UPLOAD_MAX_FILESIZE=10' paliari/php-fpm-nginx:latest
+
+sduo docker run -p 80:80 -d -e 'WEBROOT=/var/www/html/public' -e 'SET_PHP_INI_ENV=production' -e 'PHP_MEM_LIMIT=20' -e 'PHP_POST_MAX_SIZE=10' -e 'PHP_UPLOAD_MAX_FILESIZE=10' paliari/php-fpm-nginx:latest
 ```
 
 ### Environments custom
@@ -34,3 +32,13 @@ sduo docker run -d -e 'WEBROOT=/var/www/html/public' -e 'SET_PHP_INI_ENV=product
 | PHP_POST_MAX_SIZE | integer | 100 | Define PHP post max size in MB |
 | PHP_UPLOAD_MAX_FILESIZE | integer | 100 | Define PHP upload max filesize in MB |
 | SET_PHP_INI_ENV | enum(development, production) | | If defined, create /usr/local/etc/php/php.ini (recommended in production) |
+
+## Tags
+
+### oci8
+
+Image with PHP ext oci8 configured.
+
+### imagemagick
+
+Image with imagemagick installed in OS.

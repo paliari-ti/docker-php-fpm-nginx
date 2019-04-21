@@ -12,6 +12,10 @@ if [ ! -z "$SET_PHP_INI_ENV" ]; then
     fi
 fi
 
+if [ ! -z "$TIMEZONE" ]; then
+	echo $TIMEZONE > /etc/TZ
+fi
+
 # Set the desired timezone
 echo date.timezone=$(cat /etc/TZ) > /usr/local/etc/php/conf.d/timezone.ini
 

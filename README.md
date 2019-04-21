@@ -5,7 +5,7 @@ Docker image of PHP 7 with fpm and nginx in alpine linux
 ### Versioning
 | Docker Tag | Git Release | Nginx Version | PHP Version | Alpine Version |
 |-----|-------|-----|--------|--------|
-| latest/0.0.2 | Master Branch |1.14.2 | 7.3.4 | 3.9 |
+| latest/1.0.0 | Master Branch |1.14.2 | 7.3.4 | 3.9 |
 
 ### Links
 - [https://github.com/paliari/docker-php-fpm-nginx](https://github.com/paliari/docker-php-fpm-nginx)
@@ -31,6 +31,7 @@ sduo docker run -p 80:80 -d -e 'WEBROOT=/var/www/html/public' -e 'SET_PHP_INI_EN
 | PHP_MEM_LIMIT | integer | 128 | Define PHP memory limit in MB |
 | PHP_POST_MAX_SIZE | integer | 100 | Define PHP post max size in MB |
 | PHP_UPLOAD_MAX_FILESIZE | integer | 100 | Define PHP upload max filesize in MB |
+| TIMEZONE | string | UTC | Set custom timezone |
 | SET_PHP_INI_ENV | enum(development, production) | | If defined, create /usr/local/etc/php/php.ini (recommended in production) |
 
 ## Tags

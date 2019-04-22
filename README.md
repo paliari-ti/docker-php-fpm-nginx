@@ -5,7 +5,7 @@ Docker image of PHP 7 with fpm and nginx in alpine linux
 ### Versioning
 | Docker Tag | Git Release | Nginx Version | PHP Version | Alpine Version |
 |-----|-------|-----|--------|--------|
-| latest/1.0.0 | Master Branch |1.14.2 | 7.3.4 | 3.9 |
+| latest | Master Branch |1.14.2 | 7.3.4 | 3.9 |
 
 ### Links
 - [https://github.com/paliari/docker-php-fpm-nginx](https://github.com/paliari/docker-php-fpm-nginx)
@@ -36,22 +36,39 @@ sduo docker run -p 80:80 -d -e 'WEBROOT=/var/www/html/public' -e 'SET_PHP_INI_EN
 
 ## Tags
 
+### latest
+
+[Dockerfile](https://github.com/paliari/docker-php-fpm-nginx/blob/master/nginx/Dockerfile)
+
+```
+# pull lasted
+docker pull paliari/php-fpm-nginx
+# or custom version
+docker pull paliari/php-fpm-nginx:1.0.0
+```
+
 ### oci8
 
 Image with PHP ext oci8 configured.
+
+[Dockerfile](https://github.com/paliari/docker-php-fpm-nginx/blob/master/oci8/Dockerfile)
+
 ```
 # pull lasted
 docker pull paliari/php-fpm-nginx:oci8
 # or custom version
-docker pull paliari/php-fpm-nginx:oci8-0.0.2
+docker pull paliari/php-fpm-nginx:1.0.0-oci8
 ```
 
 ### imagemagick
 
 Image with imagemagick installed in OS.
+
+[Dockerfile](https://github.com/paliari/docker-php-fpm-nginx/blob/master/imagemagick/Dockerfile)
+
 ```
 # pull lasted
 docker pull paliari/php-fpm-nginx:imagemagick
 # or custom version
-docker pull paliari/php-fpm-nginx:imagemagick-0.0.2
+docker pull paliari/php-fpm-nginx:1.0.0-imagemagick
 ```

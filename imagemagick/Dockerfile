@@ -1,4 +1,4 @@
-FROM paliari/php-fpm-nginx:oci8
+FROM paliari/php-fpm-nginx:1.0.2-oci8
 
 LABEL maintainer='Marcos A Paliari <marcos@paliari.com.br>'
 

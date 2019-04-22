@@ -36,6 +36,7 @@ RUN apk update \
         -e "s/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g" \
         -e "s/^;clear_env = no$/clear_env = no/" \
         ${fpm_conf} \
+  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
   && rm -rf /var/cache/apk/* /tmp/pear/
 
 ADD conf/nginx-site.conf /etc/nginx/conf.d/default.conf

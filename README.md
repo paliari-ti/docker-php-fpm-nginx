@@ -59,16 +59,3 @@ docker pull paliari/php-fpm-nginx:oci8
 # or custom version
 docker pull paliari/php-fpm-nginx:1.0.0-oci8
 ```
-
-### imagemagick
-
-Image with imagemagick installed in OS.
-
-[Dockerfile](https://github.com/paliari/docker-php-fpm-nginx/blob/master/imagemagick/Dockerfile)
-
-```
-# pull lasted
-docker pull paliari/php-fpm-nginx:imagemagick
-# or custom version
-docker pull paliari/php-fpm-nginx:1.0.0-imagemagick
-```

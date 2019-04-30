@@ -15,7 +15,6 @@ fi
 if [ -z "$TIMEZONE" ]; then
 	TIMEZONE=UTC
 fi
-echo $TIMEZONE > /etc/timezone
 
 # Set the desired timezone
 echo "date.timezone=$TIMEZONE" > /usr/local/etc/php/conf.d/timezone.ini

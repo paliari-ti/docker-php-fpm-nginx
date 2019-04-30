@@ -2,8 +2,6 @@ FROM php:7.3-fpm
 
 LABEL maintainer="Marcos Paliari <marcos@paliari.com.br>"
 
-ENV fpm_conf /usr/local/etc/php-fpm.d/www.conf
-
 COPY start.sh /start.sh
 
 RUN apt-get update && apt-get -y install wget bsdtar libaio1 curl git zlib1g-dev libzip-dev \
@@ -26,31 +24,27 @@ RUN apt-get update && apt-get -y install wget bsdtar libaio1 curl git zlib1g-dev
   && apt-get purge -y --auto-remove \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/* \
-  && mkdir -p /var/www/html/public \
   && chmod +x /start.sh \
+  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   && sed -i \
-        -e "s/;catch_workers_output\s*=\s*yes/catch_workers_output = yes/g" \
-        -e "s/pm.max_children = 5/pm.max_children = 4/g" \
-        -e "s/pm.start_servers = 2/pm.start_servers = 3/g" \
-        -e "s/pm.min_spare_servers = 1/pm.min_spare_servers = 2/g" \
-        -e "s/pm.max_spare_servers = 3/pm.max_spare_servers = 4/g" \
-        -e "s/;pm.max_requests = 500/pm.max_requests = 200/g" \
-        -e "s/user = www-data/user = nginx/g" \
-        -e "s/group = www-data/group = nginx/g" \
-        -e "s/;listen.mode = 0660/listen.mode = 0666/g" \
-        -e "s/;listen.owner = www-data/listen.owner = nginx/g" \
-        -e "s/;listen.group = www-data/listen.group = nginx/g" \
-        -e "s/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g" \
-        -e "s/^;clear_env = no$/clear_env = no/" \
-        ${fpm_conf} \
-  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+         -e "s/;catch_workers_output\s*=\s*yes/catch_workers_output = yes/g" \
+         -e "s/pm.max_children = 5/pm.max_children = 4/g" \
+         -e "s/pm.start_servers = 2/pm.start_servers = 3/g" \
+         -e "s/pm.min_spare_servers = 1/pm.min_spare_servers = 2/g" \
+         -e "s/pm.max_spare_servers = 3/pm.max_spare_servers = 4/g" \
+         -e "s/;pm.max_requests = 500/pm.max_requests = 200/g" \
+         -e "s/;listen.mode = 0660/listen.mode = 0666/g" \
+         -e "s/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g" \
+         -e "s/^;clear_env = no$/clear_env = no/" \
+     /usr/local/etc/php-fpm.d/www.conf
 
-COPY conf/vars.ini /usr/local/etc/php/conf.d/vars.ini
-COPY src/index.php /var/www/html/public/index.php
+COPY conf/php-vars.ini /usr/local/etc/php/conf.d/docker-vars.ini
+COPY src/index.php /var/www/html/index.php
 
 ADD conf/nginx-site.conf /etc/nginx/sites-available/default
-ADD conf/supervisord-php-fpm.ini /etc/conf.d/php-fpm.ini
-ADD conf/supervisord-nginx.ini /etc/conf.d/nginx.ini
+ADD conf/supervisord.conf /etc/supervisor/supervisord.conf
+ADD conf/supervisord-php-fpm.ini /etc/supervisor/conf.d/php-fpm.ini
+ADD conf/supervisord-nginx.ini /etc/supervisor/conf.d/nginx.ini
 
 EXPOSE 80
 EXPOSE 443

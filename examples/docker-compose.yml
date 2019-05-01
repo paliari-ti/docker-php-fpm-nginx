@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    container_name: my_app
+    image: paliari/php-fpm-nginx
+    ports:
+      - 801:80
+    environment:
+      DOCUMENT_ROOT: /var/www/html/app
+    volumes:
+      - ./app:/var/www/html/app

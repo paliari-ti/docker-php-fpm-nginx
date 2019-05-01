@@ -3,9 +3,10 @@ Docker image of PHP 7 with fpm and nginx in alpine linux
 
 
 ### Versioning
-| Docker Tag | Git Release | Nginx Version | PHP Version | Alpine Version |
+| Docker Tag | Git Release | Nginx Version | PHP Version | OS Version |
 |-----|-------|-----|--------|--------|
-| latest | Master Branch |1.14.2 | 7.3.4 | 3.9 |
+| latest | Master Branch |1.14.2 | 7.3.4 | Alpine 3.9 |
+| latest | Master Branch |1.14.2 | 7.3.4 | Debian 9 |
 
 ### Links
 - [https://github.com/paliari/docker-php-fpm-nginx](https://github.com/paliari/docker-php-fpm-nginx)

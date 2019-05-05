@@ -44,6 +44,7 @@ ADD conf/supervisord.conf /etc/supervisord.conf
 ADD conf/supervisord-php-fpm.ini /etc/supervisor.d/php-fpm.ini
 ADD conf/supervisord-nginx.ini /etc/supervisor.d/nginx.ini
 ADD src/index.php /var/www/html/index.php
+ADD conf/php-opcache.ini /usr/local/etc/php/conf.d/opcache-recommended.ini
 
 WORKDIR /var/www/html
 

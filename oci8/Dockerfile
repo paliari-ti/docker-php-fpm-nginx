@@ -45,6 +45,7 @@ ADD conf/nginx-site.conf /etc/nginx/sites-available/default
 ADD conf/supervisord.conf /etc/supervisor/supervisord.conf
 ADD conf/supervisord-php-fpm.ini /etc/supervisor/conf.d/php-fpm.ini
 ADD conf/supervisord-nginx.ini /etc/supervisor/conf.d/nginx.ini
+ADD conf/php-opcache.ini /usr/local/etc/php/conf.d/opcache-recommended.ini
 
 EXPOSE 80
 EXPOSE 443

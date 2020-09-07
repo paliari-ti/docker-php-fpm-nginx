@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine3.9
+FROM php:7.4-fpm-alpine3.12
 
 LABEL maintainer='Marcos A Paliari <marcos@paliari.com.br>'
 
@@ -9,12 +9,12 @@ ADD start.sh /start.sh
 
 RUN apk update \
   && apk upgrade \
-  && apk add --no-cache bash supervisor nginx libpng-dev g++ zlib-dev icu-dev libxml2-dev libzip-dev \
-  && apk del musl-dev linux-headers libffi-dev augeas-dev python-dev make autoconf \
+  && apk add --no-cache bash supervisor nginx libpng-dev postgresql-dev g++ zlib-dev icu-dev libxml2-dev libzip-dev \
+  && apk del musl-dev linux-headers libffi-dev augeas-dev make autoconf \
   && mkdir /run/nginx \
   && mkdir -p /var/log/supervisor \
   && chmod 755 /start.sh \
-  && docker-php-ext-install pdo_mysql gd exif intl soap dom zip opcache \
+  && docker-php-ext-install pdo_mysql pdo_pgsql gd exif intl soap dom zip opcache \
   && echo "cgi.fix_pathinfo=0" > ${php_vars} &&\
     echo "upload_max_filesize = 100M"  >> ${php_vars} &&\
     echo "post_max_size = 100M"  >> ${php_vars} &&\
